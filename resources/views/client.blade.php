@@ -11,8 +11,7 @@
                 <div class="panel-body">
                
                     <div>{{ $client->fio }}</div>
-                    <div>{{ $client->email }}</div>
-                      
+                    <div><b>Email</b>: {{ $client->email }}</div>                      
                     <div><b>Balance</b>: {{ $client->balance }}</div>
                     <div><b>Status</b>: {!! ($client->status ? 'Activ' : 'Block') !!}</div>
                    
