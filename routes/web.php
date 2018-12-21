@@ -22,6 +22,8 @@ Route::post('/admin', 'Admin\FilterController@show');
 
 Route::get('/admin/client/add', 'Admin\ClientController@showform');
 Route::post('/admin/client/add', 'Admin\ClientController@add');
+
 Route::get('/admin/client/{id}', 'Admin\ClientController@show');
+Route::post('/admin/client/{id}', 'Admin\ClientController@enter');
 
 

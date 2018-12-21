@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Add user
+                   {{ link_to('admin','Home') }} :: Add user
                 </div>
                 @if ($errors->any())
                         <div class="alert alert-danger">

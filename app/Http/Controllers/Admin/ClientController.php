@@ -41,9 +41,19 @@ class ClientController extends Controller
         return view('newclient');
     }
 
-    public function show($id)    {
-        
+    public function show($id)    {        
         $client = App\Clients::getClient($id);        
         return view('client', compact('client'));
+    }
+
+    public function enter($id,Request $request)
+    {
+       $request->validate([
+            'addmoney' => 'nullable|numeric|between:1,10000',         
+            'backmoney' => 'nullable|numeric|between:1,' . App\Clients::getBalance($id),         
+            'status' => 'nullable',
+        ]);
+        App\Clients::changeClient($id, $request);
+        return $this->show($id); 
     }
 }
