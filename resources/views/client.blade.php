@@ -32,7 +32,7 @@
                     </div>
                      <div>
                         {{ Form::label('backmoney', 'Back money: ') }}
-                        {{ Form::text('backmoney', null, ['placeholder' => 'Enter from 1 to ' . $client->balance]) }}
+                        {{ Form::text('backmoney', null, ['placeholder' => 'Enter to ' . $client->balance]) }}
                     </div>
                     <div>
                         {{ Form::label('status', 'To block: ') }}

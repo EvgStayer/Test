@@ -8,22 +8,10 @@ use App;
 
 class ClientController extends Controller
 {
-     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-   
 
     public function showform()
     {      
@@ -36,7 +24,7 @@ class ClientController extends Controller
             'email' => 'required|email',         
             'fio' => 'required|string|max:50',
         ]);
-        $id = App\Clients::addClient($request);
+        $id = App\Clients::addClient($request->email, $request->fio);
         if ($id) return redirect('/admin');       
     }
 
@@ -45,14 +33,14 @@ class ClientController extends Controller
         return view('client', compact('client'));
     }
 
-    public function enter($id,Request $request)
+    public function enter($id, Request $request)
     {
        $request->validate([
             'addmoney' => 'nullable|numeric|between:1,10000',         
             'backmoney' => 'nullable|numeric|between:1,' . App\Clients::getBalance($id),         
             'status' => 'nullable',
         ]);
-        App\Clients::changeClient($id, $request);
+        App\Clients::changeClient($id, $request->all());
         return $this->show($id); 
     }
 }

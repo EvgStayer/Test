@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+
 use App;
 
 class FilterController extends Controller
@@ -25,6 +27,7 @@ class FilterController extends Controller
         $request->validate([
             'email' => 'nullable|string',         
             's_balance' => 'nullable|numeric',
+            'if_balance' => ['nullable',Rule::in(['>', '<', '='])],
         ]);
       
         $items = App\Clients::filters($request->all());
