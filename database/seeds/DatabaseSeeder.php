@@ -16,15 +16,23 @@ class DatabaseSeeder extends Seeder
 		for ($i=0; $i < 40; $i++) 
 		{ 
 			$fio = $this->FirstName[rand(0,39)] . ' ' . $this->LastName[rand(0,39)];
+			$days = rand(0,365);
+			$balance = rand(0,20);
+			$create_date = strtotime('-' . $days .' days');
+			if ($balance>10) $days = rand(0,28);
+			$last_payment = strtotime('-' . rand(0,$days) .' days');	
+			$next_payment = strtotime('+1 month', $last_payment);
+			$status = ($next_payment < time() && $balance < 10 ? false : true ); 
+
+
 			DB::table('clients')->insert([
 				'fio' =>  $fio,
 				'email' => mb_strtolower(preg_replace('/\s/', '-', $fio)) . '@gmail.com',
-				'balance' => 0,
-				'status' => false,
-	 			'next_payment' => date('Y-m-d'),
-	 			'last_payment' => date('Y-m-d'),
-	 			'last_payment' => date('Y-m-d'),
-	            'create_date' => date('Y-m-d', strtotime('-' . rand(0,365) .' days'))
+				'balance' => $balance,
+				'status' => $status,
+	 			'next_payment' => date('Y-m-d' , $next_payment),
+	 			'last_payment' => date('Y-m-d', $last_payment),
+	            'create_date' => date('Y-m-d', $create_date)
 			]);
 		}
 	}
