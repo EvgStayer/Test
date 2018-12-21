@@ -37,8 +37,7 @@ class ClientController extends Controller
             'fio' => 'required|string|max:50',
         ]);
         $id = App\Clients::addClient($request);
-        if ($id) return redirect('/admin');
-        return view('newclient');
+        if ($id) return redirect('/admin');       
     }
 
     public function show($id)    {        

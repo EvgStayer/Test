@@ -53,7 +53,7 @@
                                 <td>{{$value->last_payment}}</td>
                                 <td>{{$value->create_date}}</td>                      
                                 <td>{{$value->balance}}</td>                      
-                                <td>{!! ($value->status ? 'Activ' : 'Block') !!}</td>                      
+                                <td>{!! ($value->status ? 'Active' : 'Blocked') !!}</td>                      
                             </tr>                       
                         @endforeach                  
                     </table>

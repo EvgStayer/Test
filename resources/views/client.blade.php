@@ -22,7 +22,7 @@
                     <div>{{ $client->fio }}</div>
                     <div><b>Email</b>: {{ $client->email }}</div>                      
                     <div><b>Balance</b>: {{ $client->balance }}</div>
-                    <div><b>Status</b>: {!! ($client->status ? 'Activ' : 'Block') !!}</div>
+                    <div><b>Status</b>: {!! ($client->status ? 'Active' : 'Blocked') !!}</div>
                    
                         
                     {!! Form::open() !!}
