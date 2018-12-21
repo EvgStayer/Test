@@ -29,13 +29,21 @@ class Clients extends Model
     	 return static::where('id', $id)->value('balance');
     }
 
-   public static function changeClient($id, $request) {    
+    public static function changeClient($id, $request) {    
         if ($request->status) 
             static::where('id', $id)->update(['status' => 0]);
-        if ($request->addmoney) 
+        if ($request->addmoney) {
             static::where('id', $id)->increment('balance', $request->addmoney);
+            static::unBlock($id);
+        }
         if ($request->backmoney) 
             static::where('id', $id)->increment('balance', -$request->backmoney);         
     }
 
+    private static function unBlock($id) {
+        if (static::getBalance($id) >= 10) {
+            static::where('id', $id)->increment('balance', -10);
+            static::where('id', $id)->update(['status' => 1, 'last_payment' => date('Y-m-d'), 'next_payment' => date('Y-m-d' , strtotime('+1 month'))]);
+        }
+    }   
 }
