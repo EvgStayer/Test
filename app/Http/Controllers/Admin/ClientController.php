@@ -29,7 +29,8 @@ class ClientController extends Controller
     }
 
     public function show($id)    {        
-        $client = App\Clients::getClient($id);        
+        App\Clients::$id = $id;
+        $client = App\Clients::getClient();        
         return view('client', compact('client'));
     }
 
@@ -40,7 +41,8 @@ class ClientController extends Controller
             'backmoney' => 'nullable|numeric|between:1,' . App\Clients::getBalance($id),         
             'status' => 'nullable',
         ]);
-        App\Clients::changeClient($id, $request->all());
+       App\Clients::$id = $id;
+        App\Clients::changeClient($request->all());
         return $this->show($id); 
     }
 }
