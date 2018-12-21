@@ -25,7 +25,7 @@ class ClientController extends Controller
             'fio' => 'required|string|max:50',
         ]);
         $id = App\Clients::addClient($request->email, $request->fio);
-        if ($id) return redirect('/admin');       
+        if ($id) return redirect()->route('index');       
     }
 
     public function show($id)    {        

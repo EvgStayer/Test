@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/admin', 'Admin\FilterController@index');
+Route::get('/admin', 'Admin\FilterController@index')->name('index');
 Route::post('/admin', 'Admin\FilterController@show');
 
 Route::get('/admin/client/add', 'Admin\ClientController@showform');
