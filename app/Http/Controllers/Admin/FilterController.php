@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 
-use App;
+use App\Clients;
 
 class FilterController extends Controller
 {
@@ -18,7 +18,7 @@ class FilterController extends Controller
 
     public function index()
     {
-        $items = App\Clients::all();
+        $items = Clients::all();
         return view('admin', compact('items'));
     }
 
@@ -30,7 +30,7 @@ class FilterController extends Controller
             'if_balance' => ['nullable',Rule::in(['>', '<', '='])],
         ]);
       
-        $items = App\Clients::filters($request->all());
+        $items = Clients::filters($request->all());
         return view('admin', compact('items'));
     }
 }

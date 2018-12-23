@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
 			$fio = $this->FirstName[rand(0,39)] . ' ' . $this->LastName[rand(0,39)];
 			$days = rand(0,365);
 			$balance = rand(0,20);
-			$create_date = strtotime('-' . $days .' days');
+			$created_at = strtotime('-' . $days .' days');
 			if ($balance>10) $days = rand(0,28);
 			$last_payment = strtotime('-' . rand(0,$days) .' days');	
 			$next_payment = strtotime('+1 month', $last_payment);
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
 				'status' => $status,
 	 			'next_payment' => date('Y-m-d' , $next_payment),
 	 			'last_payment' => date('Y-m-d', $last_payment),
-	            'create_date' => date('Y-m-d', $create_date)
+	            'created_at' => date('Y-m-d', $created_at)
 			]);
 		}
 	}

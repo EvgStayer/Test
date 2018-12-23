@@ -51,7 +51,7 @@
                                 <td>{{$value->email}}</td>
                                 <td>{{$value->next_payment}}</td>
                                 <td>{{$value->last_payment}}</td>
-                                <td>{{$value->create_date}}</td>                      
+                                <td>{{$value->created_at}}</td>                      
                                 <td>{{$value->balance}}</td>                      
                                 <td>{!! ($value->status ? 'Active' : 'Blocked') !!}</td>                      
                             </tr>                       

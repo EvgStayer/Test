@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App;
+use App\Clients;
 
 class ClientController extends Controller
 {
@@ -24,25 +24,26 @@ class ClientController extends Controller
             'email' => 'required|email',         
             'fio' => 'required|string|max:50',
         ]);
-        $id = App\Clients::addClient($request->email, $request->fio);
+        $id = Clients::addClient($request->email, $request->fio);
         if ($id) return redirect()->route('index');       
     }
 
     public function show($id)    {        
-        App\Clients::$id = $id;
-        $client = App\Clients::getClient();        
+        $client = Clients::getClient($id);        
         return view('client', compact('client'));
     }
 
     public function enter($id, Request $request)
     {
-       $request->validate([
+        Clients::$id = $id;
+
+        $request->validate([
             'addmoney' => 'nullable|numeric|between:1,10000',         
-            'backmoney' => 'nullable|numeric|between:1,' . App\Clients::getBalance($id),         
+            'backmoney' => 'nullable|numeric|between:1,' . Clients::getBalance(),         
             'status' => 'nullable',
         ]);
-       App\Clients::$id = $id;
-        App\Clients::changeClient($request->all());
+       
+        Clients::changeClient($request->all());
         return $this->show($id); 
     }
 }

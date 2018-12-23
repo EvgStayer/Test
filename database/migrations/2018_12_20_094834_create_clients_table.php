@@ -19,9 +19,9 @@ class CreateClientsTable extends Migration
             $table->string('email')->unique();
             $table->integer('balance')->default(0);
             $table->boolean('status')->default(false); 
-            $table->date('next_payment')->default(date('Y-m-d'));
-            $table->date('last_payment')->default(date('Y-m-d'));
-            $table->date('create_date')->default(date('Y-m-d'));
+            $table->datetime('next_payment')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->datetime('last_payment')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
