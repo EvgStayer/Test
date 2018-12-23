@@ -17,14 +17,14 @@
                         </ul>
                     </div>
                 @endif
-                <div class="panel-body">      
+                <div class="panel-body">
                     {!! Form::open() !!}
                         {{ Form::label('fio', 'Name:*') }}
                         {{ Form::text('fio', null, ['placeholder' => 'Robert Dragon']) }}
-                        {{ Form::label('email', 'Email:*') }}                       
-                        {{ Form::text('email', null, ['placeholder' => 'username@gmail.com']) }}           
-                        {{ Form::submit('Add') }}                                      
-                    {!! Form::token() . Form::close() !!} 
+                        {{ Form::label('email', 'Email:*') }}
+                        {{ Form::text('email', null, ['placeholder' => 'username@gmail.com']) }}
+                        {{ Form::submit('Add') }}
+                    {!! Form::token() . Form::close() !!}
                 </div>
             </div>
         </div>

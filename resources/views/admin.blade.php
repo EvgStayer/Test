@@ -12,9 +12,9 @@
                         {{ Form::label('email', 'Email') }}
                         {{ Form::text('email', '') }}
                         {{ Form::label('balance', 'Balance') }}
-                        {{ Form::select('if_balance', ['>' => 'More', '<' => 'Less', '=' => 'Equally']) }}  
-                        {{ Form::text('s_balance', '') }}           
-                        {{ Form::submit('Find') }}                                      
+                        {{ Form::select('if_balance', ['>' => 'More', '<' => 'Less', '=' => 'Equally']) }}
+                        {{ Form::text('s_balance', '') }}
+                        {{ Form::submit('Find') }}
                     {!! Form::token() . Form::close() !!}
                 </div>
 
@@ -51,11 +51,11 @@
                                 <td>{{$value->email}}</td>
                                 <td>{{$value->next_payment}}</td>
                                 <td>{{$value->last_payment}}</td>
-                                <td>{{$value->created_at}}</td>                      
-                                <td>{{$value->balance}}</td>                      
-                                <td>{!! ($value->status ? 'Active' : 'Blocked') !!}</td>                      
-                            </tr>                       
-                        @endforeach                  
+                                <td>{{$value->created_at}}</td>
+                                <td>{{$value->balance}}</td>
+                                <td>{!! ($value->status ? 'Active' : 'Blocked') !!}</td>
+                            </tr>
+                        @endforeach
                     </table>
                 </div>
             </div>

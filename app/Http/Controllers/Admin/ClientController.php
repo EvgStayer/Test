@@ -9,7 +9,7 @@ use App\Clients;
 class ClientController extends Controller
 {
    
-    public function showform()
+    public function showForm()
     {      
         return view('newclient');
     }
@@ -17,15 +17,16 @@ class ClientController extends Controller
     public function add(Request $request)
     {
        $request->validate([
-            'email' => 'required|email',         
+            'email' => 'required|email',
             'fio' => 'required|string|max:50',
         ]);
         $id = Clients::addClient($request->email, $request->fio);
-        if ($id) return redirect()->route('index');       
+        if ($id) return redirect()->route('index');
     }
 
-    public function show($id)    {        
-        $client = Clients::getClient($id);        
+    public function show($id)
+    {
+        $client = Clients::getClient($id);
         return view('client', compact('client'));
     }
 
@@ -34,12 +35,12 @@ class ClientController extends Controller
         Clients::$id = $id;
 
         $request->validate([
-            'addmoney' => 'nullable|numeric|between:1,10000',         
-            'backmoney' => 'nullable|numeric|between:1,' . Clients::getBalance(),         
+            'addmoney' => 'nullable|numeric|between:1,10000',
+            'backmoney' => 'nullable|numeric|between:1,' . Clients::getBalance(),
             'status' => 'nullable',
         ]);
-       
+
         Clients::changeClient($request->all());
-        return $this->show($id); 
+        return $this->show($id);
     }
 }

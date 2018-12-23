@@ -20,7 +20,7 @@
                 <div class="panel-body">
                
                     <div>{{ $client->fio }}</div>
-                    <div><b>Email</b>: {{ $client->email }}</div>                      
+                    <div><b>Email</b>: {{ $client->email }}</div>
                     <div><b>Balance</b>: {{ $client->balance }}</div>
                     <div><b>Status</b>: {!! ($client->status ? 'Active' : 'Blocked') !!}</div>
                    
@@ -38,7 +38,7 @@
                         {{ Form::label('status', 'To block: ') }}
                         {{ Form::checkbox('status', '1') }}
                     </div>
-                        {{ Form::submit('Apply') }}                                      
+                        {{ Form::submit('Apply') }}
                     {!! Form::token() . Form::close() !!}
                 </div>
             </div>

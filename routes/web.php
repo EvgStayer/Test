@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/admin', 'Admin\FilterController@index')->name('index');
 Route::post('/admin', 'Admin\FilterController@show');
 
-Route::get('/admin/client/add', 'Admin\ClientController@showform');
+Route::get('/admin/client/add', 'Admin\ClientController@showForm');
 Route::post('/admin/client/add', 'Admin\ClientController@add');
 
 Route::get('/admin/client/{id}', 'Admin\ClientController@show');

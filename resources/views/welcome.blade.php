@@ -7,7 +7,7 @@
                     OOO "Vodokanal"
                 </div>
 
-                <div class="links">                   
+                <div class="links">
                     <a href="/admin/">Enter</a>
                 </div>
             </div>
