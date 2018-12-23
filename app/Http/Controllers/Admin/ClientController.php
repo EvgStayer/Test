@@ -8,11 +8,7 @@ use App\Clients;
 
 class ClientController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
+   
     public function showform()
     {      
         return view('newclient');
